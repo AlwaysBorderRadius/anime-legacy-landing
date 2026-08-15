@@ -33,6 +33,29 @@ html {
 
 body {
     overflow-x: hidden;
+    background-color: #0a0a0f;
+}
+
+.hero-background {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://static.crunchyroll.com/cr-acquisition/assets/img/start/hero/us-global/background-desktop.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, 
+        rgba(10, 10, 15, 0.3) 0%, 
+        rgba(10, 10, 15, 0.5) 40%, 
+        rgba(10, 10, 15, 0.85) 65%, 
+        rgba(10, 10, 15, 1) 85%
+    );
+    z-index: 1;
 }
 
 .hero-glow {
@@ -44,7 +67,7 @@ body {
     height: 600px;
     background: radial-gradient(ellipse, #00abff12 0%, transparent 70%);
     pointer-events: none;
-    z-index: 0;
+    z-index: 2;
 }
 
 .cta-glow {
@@ -98,7 +121,7 @@ body {
     transform: translateY(0);
 }
 
-#navbar.scrolled {
+#navbar {
     background: rgba(10, 10, 15, 0.85);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
@@ -126,4 +149,11 @@ body {
 
 .feature-card:hover::before {
     background: linear-gradient(135deg, #00abff33, transparent, #00abff11);
+}
+
+@media (max-width: 768px) {
+    .hero-background {
+        background-image: url('https://static.crunchyroll.com/cr-acquisition/assets/img/start/hero/us-global/background-desktop.jpg');
+        background-position: center top;
+    }
 }
