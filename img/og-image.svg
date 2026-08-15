@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0a0a0f"/>
+  <rect x="0" y="0" width="1200" height="630" fill="url(#glow)"/>
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#00abff" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#0a0a0f" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <text x="600" y="260" font-family="Arial, sans-serif" font-size="80" font-weight="bold" fill="white" text-anchor="middle">Anime</text>
+  <text x="600" y="350" font-family="Arial, sans-serif" font-size="80" font-weight="bold" fill="#00abff" text-anchor="middle">Legacy</text>
+  <text x="600" y="420" font-family="Arial, sans-serif" font-size="24" fill="#a0a0b0" text-anchor="middle">La comunidad definitiva de anime en Discord</text>
+  <text x="600" y="480" font-family="Arial, sans-serif" font-size="20" fill="#666" text-anchor="middle">+3,000 miembros  ·  Descargas 1080p  ·  Torneos  ·  Y mucho más</text>
+</svg>

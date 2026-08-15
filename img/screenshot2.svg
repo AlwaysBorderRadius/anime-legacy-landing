@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <rect width="800" height="450" fill="#12121a"/>
+  <rect x="20" y="20" width="760" height="50" rx="8" fill="#1a1a25"/>
+  <text x="400" y="52" font-family="Arial" font-size="20" font-weight="bold" fill="#00abff" text-anchor="middle">Descargas Anime</text>
+  <rect x="20" y="90" width="240" height="340" rx="8" fill="#1a1a25"/>
+  <rect x="30" y="100" width="220" height="130" rx="4" fill="#222230"/>
+  <rect x="30" y="240" width="150" height="14" rx="4" fill="#ffffff33"/>
+  <rect x="30" y="262" width="100" height="10" rx="4" fill="#ffffff15"/>
+  <rect x="30" y="290" width="80" height="24" rx="12" fill="#00abff33"/>
+  <rect x="280" y="90" width="240" height="340" rx="8" fill="#1a1a25"/>
+  <rect x="290" y="100" width="220" height="130" rx="4" fill="#222230"/>
+  <rect x="290" y="240" width="150" height="14" rx="4" fill="#ffffff33"/>
+  <rect x="290" y="262" width="100" height="10" rx="4" fill="#ffffff15"/>
+  <rect x="290" y="290" width="80" height="24" rx="12" fill="#00abff33"/>
+  <rect x="540" y="90" width="240" height="340" rx="8" fill="#1a1a25"/>
+  <rect x="550" y="100" width="220" height="130" rx="4" fill="#222230"/>
+  <rect x="550" y="240" width="150" height="14" rx="4" fill="#ffffff33"/>
+  <rect x="550" y="262" width="100" height="10" rx="4" fill="#ffffff15"/>
+  <rect x="550" y="290" width="80" height="24" rx="12" fill="#00abff33"/>
+</svg>
