@@ -70,6 +70,24 @@ body {
     z-index: 2;
 }
 
+.ambient-glow {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(ellipse at center, #00abff08 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.ambient-glow.visible {
+    opacity: 1;
+}
+
 .cta-glow {
     position: absolute;
     top: 50%;

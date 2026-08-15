@@ -1,12 +1,21 @@
 const navbar = document.getElementById('navbar');
 const mobileMenuBtn = document.getElementById('mobile-menu-btn');
 const mobileMenu = document.getElementById('mobile-menu');
+const ambientGlow = document.getElementById('ambient-glow');
+const heroSection = document.querySelector('main > section:first-child');
 
 window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
         navbar.classList.add('scrolled');
     } else {
         navbar.classList.remove('scrolled');
+    }
+
+    const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+    if (window.scrollY > heroBottom - 200) {
+        ambientGlow.classList.add('visible');
+    } else {
+        ambientGlow.classList.remove('visible');
     }
 });
 
