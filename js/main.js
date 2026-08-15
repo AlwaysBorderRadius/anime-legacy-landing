@@ -4,7 +4,7 @@ const mobileMenu = document.getElementById('mobile-menu');
 const ambientGlow = document.getElementById('ambient-glow');
 const heroSection = document.querySelector('main > section:first-child');
 
-const WORKER_URL = 'https://anime-legacy-api.tu-subdomain.workers.dev';
+const WORKER_URL = 'https://anime-legacy-api.animelegacyalpha.workers.dev';
 
 async function fetchServerInfo() {
   try {

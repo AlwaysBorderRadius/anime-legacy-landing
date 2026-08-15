@@ -4,7 +4,7 @@ compatibility_date = "2024-01-01"
 
 [[kv_namespaces]]
 binding = "CACHE"
-id = "TU_KV_NAMESPACE_ID_AQUI"
+id = "2a976d54097f45cd889d2c8581b29ac6"
 
 [vars]
 GUILD_ID = "738435000583585823"
