@@ -19,11 +19,14 @@ async function fetchServerInfo() {
       memberBadge.textContent = `+${data.memberCount.toLocaleString()} miembros • 2° servidor de anime en España`;
     }
     
+    const navName = document.getElementById('nav-name');
+    if (navName && data.name) {
+      navName.textContent = data.name;
+    }
+    
     const navIcon = document.getElementById('nav-icon');
-    const footerIcon = document.getElementById('footer-icon');
-    if (data.iconUrl) {
-      if (navIcon) navIcon.src = data.iconUrl;
-      if (footerIcon) footerIcon.src = data.iconUrl;
+    if (data.iconUrl && navIcon) {
+      navIcon.src = data.iconUrl;
     }
     
     const heroBackground = document.getElementById('hero-background');

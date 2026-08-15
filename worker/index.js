@@ -48,10 +48,10 @@ export default {
           memberCount: guild.approximate_member_count,
           onlineCount: guild.approximate_presence_count,
           iconUrl: guild.icon 
-            ? `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png?size=128`
+            ? `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.${guild.icon.startsWith('a_') ? 'gif' : 'png'}?size=128`
             : null,
           bannerUrl: guild.banner 
-            ? `https://cdn.discordapp.com/banners/${guild.id}/${guild.banner}.png?size=1024`
+            ? `https://cdn.discordapp.com/banners/${guild.id}/${guild.banner}.${guild.banner.startsWith('a_') ? 'gif' : 'png'}?size=1024`
             : null
         };
 
