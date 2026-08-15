@@ -4,6 +4,40 @@ const mobileMenu = document.getElementById('mobile-menu');
 const ambientGlow = document.getElementById('ambient-glow');
 const heroSection = document.querySelector('main > section:first-child');
 
+const WORKER_URL = 'https://anime-legacy-api.tu-subdomain.workers.dev';
+
+async function fetchServerInfo() {
+  try {
+    const response = await fetch(`${WORKER_URL}/api/server-info`);
+    if (!response.ok) throw new Error('Worker error');
+    
+    const data = await response.json();
+    
+    const memberBadge = document.getElementById('member-badge');
+    if (memberBadge && data.memberCount) {
+      const emoji = data.name.match(/^\p{Emoji}/u)?.[0] || '';
+      memberBadge.textContent = `+${data.memberCount.toLocaleString()} miembros • 2° servidor de anime en España`;
+    }
+    
+    const navIcon = document.getElementById('nav-icon');
+    const footerIcon = document.getElementById('footer-icon');
+    if (data.iconUrl) {
+      if (navIcon) navIcon.src = data.iconUrl;
+      if (footerIcon) footerIcon.src = data.iconUrl;
+    }
+    
+    const heroBackground = document.getElementById('hero-background');
+    if (heroBackground && data.bannerUrl) {
+      heroBackground.style.backgroundImage = `url('${data.bannerUrl}')`;
+    }
+    
+  } catch (error) {
+    console.log('Using fallback data:', error.message);
+  }
+}
+
+fetchServerInfo();
+
 window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
         navbar.classList.add('scrolled');
