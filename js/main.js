@@ -14,9 +14,12 @@ async function fetchServerInfo() {
     const data = await response.json();
     
     const memberBadge = document.getElementById('member-badge');
+    const ctaMemberCount = document.getElementById('cta-member-count');
     if (memberBadge && data.memberCount) {
-      const emoji = data.name.match(/^\p{Emoji}/u)?.[0] || '';
       memberBadge.textContent = `+${data.memberCount.toLocaleString()} miembros • 2° servidor de anime en España`;
+    }
+    if (ctaMemberCount && data.memberCount) {
+      ctaMemberCount.textContent = data.memberCount.toLocaleString();
     }
     
     const navName = document.getElementById('nav-name');
