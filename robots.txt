@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://anime-legacy.pages.dev/sitemap.xml
+Sitemap: https://anime-legacy-landing.pages.dev/sitemap.xml
