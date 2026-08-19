@@ -82,6 +82,98 @@ export default {
       }
     }
 
+    if (url.pathname === '/api/reviews') {
+      try {
+        const cached = await env.CACHE.get('reviews', 'json');
+        
+        if (cached && cached.timestamp && (Date.now() - cached.timestamp) < 3600 * 1000) {
+          return new Response(JSON.stringify(cached.data), {
+            headers: {
+              'Content-Type': 'application/json',
+              'Cache-Control': 'public, max-age=3600',
+              ...corsHeaders
+            }
+          });
+        }
+
+        const reviewsResponse = await fetch(`https://disboard.org/es/server/reviews/${env.GUILD_ID}`, {
+          headers: {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+          }
+        });
+
+        if (!reviewsResponse.ok) {
+          throw new Error(`Disboard error: ${reviewsResponse.status}`);
+        }
+
+        const html = await reviewsResponse.text();
+        const reviews = parseReviews(html);
+
+        await env.CACHE.put('reviews', JSON.stringify({
+          data: reviews,
+          timestamp: Date.now()
+        }), { expirationTtl: 3600 });
+
+        return new Response(JSON.stringify(reviews), {
+          headers: {
+            'Content-Type': 'application/json',
+            'Cache-Control': 'public, max-age=3600',
+            ...corsHeaders
+          }
+        });
+
+      } catch (error) {
+        return new Response(JSON.stringify({ 
+          error: 'Failed to fetch reviews',
+          message: error.message 
+        }), {
+          status: 500,
+          headers: {
+            'Content-Type': 'application/json',
+            ...corsHeaders
+          }
+        });
+      }
+    }
+
     return new Response('Not found', { status: 404, headers: corsHeaders });
   }
 };
+
+function parseReviews(html) {
+  const reviews = [];
+  const reviewBlocks = html.split('class="review"').slice(1);
+  
+  for (const block of reviewBlocks.slice(0, 6)) {
+    try {
+      const authorMatch = block.match(/class="review-owner-name[^>]*>([^<]+)</);
+      const author = authorMatch ? authorMatch[1].trim() : 'Anónimo';
+      
+      const dateMatch = block.match(/class="review-date"[^>]*>([^<]+)</);
+      const date = dateMatch ? dateMatch[1].trim() : '';
+      
+      const ratingMatch = block.match(/class="star-rating"[^>]*data-rating="(\d+)"/);
+      const rating = ratingMatch ? parseInt(ratingMatch[1]) : 5;
+      
+      const titleMatch = block.match(/class="review-title"[^>]*>([^<]+)</);
+      const title = titleMatch ? titleMatch[1].trim() : '';
+      
+      const bodyMatch = block.match(/class="review-body"[^>]*>([\s\S]*?)<\/div>/);
+      const body = bodyMatch ? bodyMatch[1].replace(/<[^>]+>/g, '').trim() : '';
+      
+      if (author && body) {
+        reviews.push({
+          author,
+          date,
+          rating,
+          title,
+          body: body.substring(0, 200) + (body.length > 200 ? '...' : '')
+        });
+      }
+    } catch (e) {
+      continue;
+    }
+  }
+  
+  return reviews;
+}
