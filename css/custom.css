@@ -183,6 +183,41 @@ body {
     background: linear-gradient(135deg, #00abff33, transparent, #00abff11);
 }
 
+.lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    animation: fade-in 0.3s ease;
+}
+
+.lightbox.active {
+    display: flex;
+}
+
+.lightbox-img {
+    max-width: 90%;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 0 40px rgba(0, 171, 255, 0.3);
+    animation: zoom-in 0.3s ease;
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes zoom-in {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
 @media (max-width: 768px) {
     .hero-background {
         background-image: url('https://static.crunchyroll.com/cr-acquisition/assets/img/start/hero/us-global/background-desktop.jpg');

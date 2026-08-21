@@ -369,18 +369,20 @@
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                     <div
-                        class="scroll-reveal group relative overflow-hidden rounded-2xl border border-white/5 hover:border-accent/30 transition-all duration-300">
-                        <img src="/img/screenshot1.svg" alt="Screenshot del servidor Anime Legacy - Canal principal"
+                        class="scroll-reveal group relative overflow-hidden rounded-2xl border border-white/5 hover:border-accent/30 transition-all duration-300 cursor-pointer"
+                        onclick="openLightbox('/img/ChatAnime.png')">
+                        <img src="/img/ChatAnime.png" alt="Screenshot del servidor Anime Legacy - Chat Anime"
                             class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500"
                             loading="lazy" width="400" height="224">
                         <div
                             class="absolute inset-0 bg-gradient-to-t from-dark-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                            <span class="text-sm font-medium">Canal Principal</span>
+                            <span class="text-sm font-medium">Chat Anime</span>
                         </div>
                     </div>
                     <div
-                        class="scroll-reveal group relative overflow-hidden rounded-2xl border border-white/5 hover:border-accent/30 transition-all duration-300">
-                        <img src="/img/BibliotecaAnime1.png" alt="Screenshot del servidor Anime Legacy - Descargas"
+                        class="scroll-reveal group relative overflow-hidden rounded-2xl border border-white/5 hover:border-accent/30 transition-all duration-300 cursor-pointer"
+                        onclick="openLightbox('/img/BibliotecaAnime.png')">
+                        <img src="/img/BibliotecaAnime.png" alt="Screenshot del servidor Anime Legacy - Biblioteca Anime"
                             class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500"
                             loading="lazy" width="400" height="224">
                         <div
@@ -389,33 +391,14 @@
                         </div>
                     </div>
                     <div
-                        class="scroll-reveal group relative overflow-hidden rounded-2xl border border-white/5 hover:border-accent/30 transition-all duration-300">
-                        <img src="/img/BibliotecaAnime2.png" alt="Screenshot del servidor Anime Legacy - Descargas"
+                        class="scroll-reveal group relative overflow-hidden rounded-2xl border border-white/5 hover:border-accent/30 transition-all duration-300 cursor-pointer"
+                        onclick="openLightbox('/img/TorneosAnime.png')">
+                        <img src="/img/TorneosAnime.png" alt="Screenshot del servidor Anime Legacy - Torneos Anime"
                             class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500"
                             loading="lazy" width="400" height="224">
                         <div
                             class="absolute inset-0 bg-gradient-to-t from-dark-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                            <span class="text-sm font-medium">Biblioteca Anime</span>
-                        </div>
-                    </div>
-                    <div
-                        class="scroll-reveal group relative overflow-hidden rounded-2xl border border-white/5 hover:border-accent/30 transition-all duration-300">
-                        <img src="/img/BibliotecaAnime3.png" alt="Screenshot del servidor Anime Legacy - Descargas"
-                            class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500"
-                            loading="lazy" width="400" height="224">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-t from-dark-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                            <span class="text-sm font-medium">Biblioteca Anime</span>
-                        </div>
-                    </div>
-                    <div
-                        class="scroll-reveal group relative overflow-hidden rounded-2xl border border-white/5 hover:border-accent/30 transition-all duration-300">
-                        <img src="/img/screenshot3.svg" alt="Screenshot del servidor Anime Legacy - Comunidad"
-                            class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500"
-                            loading="lazy" width="400" height="224">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-t from-dark-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                            <span class="text-sm font-medium">Comunidad</span>
+                            <span class="text-sm font-medium">Torneos Anime</span>
                         </div>
                     </div>
                 </div>
@@ -577,6 +560,10 @@
             </a>
         </div>
     </footer>
+
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" class="lightbox-img" src="" alt="">
+    </div>
 
     <script src="/js/main.js"></script>
 </body>
