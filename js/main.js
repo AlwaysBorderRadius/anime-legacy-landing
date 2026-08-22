@@ -7,39 +7,39 @@ const heroSection = document.querySelector('main > section:first-child');
 const WORKER_URL = 'https://anime-legacy-api.animelegacyalpha.workers.dev';
 
 async function fetchServerInfo() {
-  try {
-    const response = await fetch(`${WORKER_URL}/api/server-info`);
-    if (!response.ok) throw new Error('Worker error');
-    
-    const data = await response.json();
-    
-    const memberBadge = document.getElementById('member-badge');
-    const ctaMemberCount = document.getElementById('cta-member-count');
-    if (memberBadge && data.memberCount) {
-      memberBadge.textContent = `+${data.memberCount.toLocaleString()} miembros • 2° servidor de anime en España`;
+    try {
+        const response = await fetch(`${WORKER_URL}/api/server-info`);
+        if (!response.ok) throw new Error('Worker error');
+
+        const data = await response.json();
+
+        const memberCountNumber = document.getElementById('member-count-number');
+        const ctaMemberCount = document.getElementById('cta-member-count');
+        if (memberCountNumber && data.memberCount) {
+            memberCountNumber.textContent = data.memberCount.toLocaleString();
+        }
+        if (ctaMemberCount && data.memberCount) {
+            ctaMemberCount.textContent = data.memberCount.toLocaleString();
+        }
+
+        const navName = document.getElementById('nav-name');
+        if (navName && data.name) {
+            navName.textContent = data.name;
+        }
+
+        const navIcon = document.getElementById('nav-icon');
+        if (data.iconUrl && navIcon) {
+            navIcon.src = data.iconUrl;
+        }
+
+        const heroBackground = document.getElementById('hero-background');
+        if (heroBackground && data.bannerUrl) {
+            heroBackground.style.backgroundImage = `url('${data.bannerUrl}')`;
+        }
+
+    } catch (error) {
+        console.log('Using fallback data:', error.message);
     }
-    if (ctaMemberCount && data.memberCount) {
-      ctaMemberCount.textContent = data.memberCount.toLocaleString();
-    }
-    
-    const navName = document.getElementById('nav-name');
-    if (navName && data.name) {
-      navName.textContent = data.name;
-    }
-    
-    const navIcon = document.getElementById('nav-icon');
-    if (data.iconUrl && navIcon) {
-      navIcon.src = data.iconUrl;
-    }
-    
-    const heroBackground = document.getElementById('hero-background');
-    if (heroBackground && data.bannerUrl) {
-      heroBackground.style.backgroundImage = `url('${data.bannerUrl}')`;
-    }
-    
-  } catch (error) {
-    console.log('Using fallback data:', error.message);
-  }
 }
 
 fetchServerInfo();
